@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+        <div class="emp-detail-text table-hdr">
+            Person Details
+            <div class="emp-count">{{ addressCount }}</div>
+        </div>
+        <a href="../pages/addressBookForm.html" class="add-button">
+            <img src="../assets/icons/add-24px.svg" alt="">Add User</a>
+    </div>
+    <div class="table-main">
+        <table id="table-display" class="table">
+            <tr>
+                <th>Fullname</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone Number</th>
+                <th></th>
+            </tr>
+
+            <tr *ngFor="let addressBookData of addressBookDetails" class="trr">
+                <td>{{ addressBookData.name }}</td>
+                <td>{{ addressBookData.address }}</td>
+                <td>{{ addressBookData.city }}</td>
+                <td>{{ addressBookData.state }}</td>
+                <td>{{ addressBookData.zip }}</td>
+                <td>{{ addressBookData.phoneNo }}</td>
+                <!-- <td>Moonlight Sunlight</td>
+                <td>Royal Society Kingdom of God</td>
+                <td>Golden City</td>
+                <td>Greter State</td>
+                <td>000011</td>
+                <td>1122334455</td> -->
+                <td>
+                    <img id="1" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
+                    <img id="1" onclick="update(this)" alt="edit" src="../assets/icons/create-black-18dp.svg">
+                </td>
+        </table>
+
+    </div>
+</div>
