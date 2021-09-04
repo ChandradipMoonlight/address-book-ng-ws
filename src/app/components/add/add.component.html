@@ -1,1 +1,91 @@
-<p>add works!</p>
+<app-header></app-header>
+<div class="form-content">
+    <form class="form" [formGroup]="addressBookFormGroup" (ngSubmit)="onSubmit()">
+        <div class="address-header">
+            <div class="address-header-content">Person Address form</div>
+            <a class="" routerLink="/home">
+                <img class="cancel-button" src="../assets/images/cancel.jpeg">
+            </a>
+        </div>
+
+        <!--Input Name-->
+        <div class="row-content">
+            <mat-label class="label text">Full Name</mat-label>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <input class="input" matInput placeholder="Your name" formControlName="name">
+            </mat-form-field>
+        </div>
+
+        <!--Phone Number-->
+        <div class="row-content">
+            <mat-label class="label text">Phone Number</mat-label>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <input class="" matInput placeholder="Your phone Number" formControlName="phoneNo">
+            </mat-form-field>
+        </div>
+
+
+        <!--Address-->
+        <div class="row-content address-label">
+            <mat-label class="label text">Address</mat-label>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <textarea matInput class="input address-text" name="address" style="height:60px" formControlName="address"></textarea>
+            </mat-form-field>
+        </div>
+
+        <!--Selector-->
+        <div class="row-content-exp">
+
+            <!--Select State-->
+            <div class="oneRow-content">
+                <h4 class="label text">State</h4>
+                <mat-form-field appearance="outline">
+                    <mat-label>select State</mat-label>
+                    <mat-select class="input" name="state" formControlName="state">
+                        <mat-option>Select State</mat-option>
+                        <mat-option *ngFor="let state of states" value="{{ state.name }}">
+                            {{state.name}}
+                        </mat-option>
+                        <!-- <mat-option value="assam">Assam</mat-option>
+                        <mat-option value="west">West B</mat-option>
+                        <mat-option value="rajasthan">Rajasthan</mat-option>
+                        <mat-option value="hariana">Hariana</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!--City-->
+            <div class="oneRow-content">
+                <mat-label class="label text">City</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-label>select city</mat-label>
+                    <mat-select class="input" name="city" formControlName="city">
+                        <mat-option>Select City</mat-option>
+                        <mat-option *ngFor="let city of cities" value="{{ city.name }}">
+                            {{city.name}}
+                        </mat-option>
+                        <!-- <mat-option>Kokrajhar</mat-option>
+                        <mat-option>Kolkata</mat-option>
+                        <mat-option>Hajipur</mat-option>
+                        <mat-option>Guwahati</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!--Zip Code-->
+            <div class="oneRow-content">
+                <mat-label class="label text">Zip Code</mat-label>
+                <mat-form-field class="example-half-width" appearance="outline">
+                    <input class="input" matInput placeholder="" formControlName="zip">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="buttonParent">
+            <div class="submit-reset">
+                <button mat-raised-button type="submit" class="button submitButton">Add</button>
+                <button mat-raised-button type="reset" class="resetButton button">Reset</button>
+            </div>
+        </div>
+    </form>
+</div>

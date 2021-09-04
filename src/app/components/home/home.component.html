@@ -5,8 +5,9 @@
             Person Details
             <div class="emp-count">{{ addressCount }}</div>
         </div>
-        <a href="../pages/addressBookForm.html" class="add-button">
-            <img src="../assets/icons/add-24px.svg" alt="">Add User</a>
+        <a class="add-button" routerLink="/form">
+            <img src="../../../assets/icons/add-24px.svg" alt="Add User Logo">Add User
+        </a>
     </div>
     <div class="table-main">
         <table id="table-display" class="table">
@@ -34,8 +35,8 @@
                 <td>000011</td>
                 <td>1122334455</td> -->
                 <td>
-                    <img id="1" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
-                    <img id="1" onclick="update(this)" alt="edit" src="../assets/icons/create-black-18dp.svg">
+                    <img id={{addressBookData.id}} (click)="remove(addressBookData.id)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
+                    <img id={{addressBookData.id}} (click)="update(addressBookData)" alt="edit" src="../assets/icons/create-black-18dp.svg">
                 </td>
         </table>
 
