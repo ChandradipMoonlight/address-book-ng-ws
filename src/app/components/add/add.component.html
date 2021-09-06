@@ -1,18 +1,24 @@
 <app-header></app-header>
 <div class="form-content">
-    <form class="form" [formGroup]="addressBookFormGroup" (ngSubmit)="onSubmit()">
+    <form class="form top-space">
         <div class="address-header">
             <div class="address-header-content">Person Address form</div>
             <a class="" routerLink="/home">
                 <img class="cancel-button" src="../assets/images/cancel.jpeg">
             </a>
         </div>
+    </form>
+</div>
 
+<div class="form-content">
+    <form class="form" [formGroup]="addressBookFormGroup" (ngSubmit)="onSubmit()">
         <!--Input Name-->
         <div class="row-content">
             <mat-label class="label text">Full Name</mat-label>
             <mat-form-field class="example-full-width" appearance="outline">
-                <input class="input" matInput placeholder="Your name" formControlName="name">
+                <input matInput placeholder="Your name" formControlName="name">
+                <mat-error *ngIf="checkError('name', 'required')">Name is required</mat-error>
+                <mat-error *ngIf="checkError('name', 'pattern')">Name should start with upper case and should have minimum of 3 characters</mat-error>
             </mat-form-field>
         </div>
 
@@ -20,7 +26,9 @@
         <div class="row-content">
             <mat-label class="label text">Phone Number</mat-label>
             <mat-form-field class="example-full-width" appearance="outline">
-                <input class="" matInput placeholder="Your phone Number" formControlName="phoneNo">
+                <input matInput placeholder="Your phone Number" formControlName="phoneNo">
+                <mat-error *ngIf="checkError('phoneNo', 'required')">Phone Number is required</mat-error>
+                <mat-error *ngIf="checkError('phoneNo', 'pattern')">Phone number should be between 6-9 and length should be equal to 10</mat-error>
             </mat-form-field>
         </div>
 
@@ -29,7 +37,9 @@
         <div class="row-content address-label">
             <mat-label class="label text">Address</mat-label>
             <mat-form-field class="example-full-width" appearance="outline">
-                <textarea matInput class="input address-text" name="address" style="height:60px" formControlName="address"></textarea>
+                <textarea matInput name="address" style="height:60px" formControlName="address"></textarea>
+                <mat-error *ngIf="checkError('address', 'required')">Address is required</mat-error>
+                <mat-error *ngIf="checkError('name', 'pattern')">Address should start with upper case and should have minimum of 3 characters</mat-error>
             </mat-form-field>
         </div>
 
@@ -41,7 +51,7 @@
                 <h4 class="label text">State</h4>
                 <mat-form-field appearance="outline">
                     <mat-label>select State</mat-label>
-                    <mat-select class="input" name="state" formControlName="state">
+                    <mat-select name="state" formControlName="state">
                         <mat-option>Select State</mat-option>
                         <mat-option *ngFor="let state of states" value="{{ state.name }}">
                             {{state.name}}
@@ -59,7 +69,7 @@
                 <mat-label class="label text">City</mat-label>
                 <mat-form-field appearance="outline">
                     <mat-label>select city</mat-label>
-                    <mat-select class="input" name="city" formControlName="city">
+                    <mat-select name="city" formControlName="city">
                         <mat-option>Select City</mat-option>
                         <mat-option *ngFor="let city of cities" value="{{ city.name }}">
                             {{city.name}}
@@ -76,7 +86,9 @@
             <div class="oneRow-content">
                 <mat-label class="label text">Zip Code</mat-label>
                 <mat-form-field class="example-half-width" appearance="outline">
-                    <input class="input" matInput placeholder="" formControlName="zip">
+                    <input matInput placeholder="" formControlName="zip">
+                    <mat-error *ngIf="checkError('zip', 'required')">Zip is required</mat-error>
+                    <mat-error *ngIf="checkError('zip', 'pattern')">Zip should be only numeric and length should be equal to 6</mat-error>
                 </mat-form-field>
             </div>
         </div>
